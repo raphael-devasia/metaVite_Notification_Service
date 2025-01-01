@@ -16,14 +16,17 @@ const consumeNotificationQueue = async () => {
         if (msg !== null) {
             try {
                 const message = JSON.parse(msg.content.toString())
-                const { email, subject, text } = message
+                const { email, subject, text,html } = message
                 console.log(message)
+
                 
                 const mailOptions = {
                     from: process.env.EMAIL_USER,
                     to: email,
                     subject,
                     text,
+                    html
+                   
                 }
 
                 // Attempt to send the email
